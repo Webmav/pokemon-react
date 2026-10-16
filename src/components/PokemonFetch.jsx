@@ -9,10 +9,14 @@ export default function PokemonFetch() {
     async function fetchData()  {
         const div = document.getElementById("div");
         const inputName = document.getElementById('inputName').value;
-        const defaultSprite = document.getElementById('defaultSprite');
+        const frontDefault = document.getElementById('frontDefault');
         const outputPokemonName = document.getElementById('pokemonName');
         const outputPokemonType = document.getElementById('pokemonType');
         const outputPokemonAttacks = document.getElementById('pokemonAttacks');
+        const frontFemale = document.getElementById('frontFemale');
+        const frontShiny = document.getElementById('frontShiny');
+        const backDefault = document.getElementById('backDefault');
+        const backShiny = document.getElementById('backShiny');
         
         setInputName(inputName)
 
@@ -22,19 +26,26 @@ export default function PokemonFetch() {
 
             console.log(data)
 
-            defaultSprite.src = data.sprites.front_default;
+            frontDefault.src = data.sprites.front_default;
+            frontFemale.src = data.sprites.front_female;
+            frontShiny.src = data.sprites.front_shiny;
+            backDefault.src = data.sprites.back_default;
+            backShiny.src = data.sprites.back_shiny;
+
+            { (frontFemale.src == "http://localhost:5173/null") ? frontFemale.style.display = "none" : frontFemale.style.display = "block";}
+            { (frontShiny.src == "http://localhost:5173/null") ? frontShiny.style.display = "none" : frontShiny.style.display = "block";}
+            { (backDefault.src == "http://localhost:5173/null") ? backDefault.style.display = "none" : backDefault.style.display = "block";}
+            { (backShiny.src == "http://localhost:5173/null") ? backShiny.style.display = "none" : backShiny.style.display = "block";}
+
             setPokemonName(data.name)
             setPokemonType(data.types[0].type.name)
             setPokemonAttacks(data.moves[0].move.name)
-            console.log(data.moves[0].move.name)
                       
             outputPokemonName.textContent = "Name : " + data.name;
             outputPokemonType.textContent = "Type : " + data.types[0].type.name;
             outputPokemonAttacks.textContent = "Attacks : " + data.moves[0].move.name;
         })
         .catch((error) => { console.error (error); })
-
-        
     }
 
     return(
@@ -49,7 +60,7 @@ export default function PokemonFetch() {
                     <img
                         src="/"
                         alt=''
-                        id='defaultSprite'
+                        id='frontDefault'
                         className='w-[100%] h-[100%] '
                     />
                 </div>
@@ -67,15 +78,13 @@ export default function PokemonFetch() {
                 </div>
             </div>
             <div className="flex min-h-[100px] min-w-[100px] justify-self-center gap-[50px] mt-[50px] ">
-                <img id='' src="/" alt="" className='border border-black h-[100px] w-[100px] '/>
+                <img id='backDefault' src="/" alt="" className='border border-black h-[100px] w-[100px] '/>
                 
-                <img id='' src="/" alt="" className='border border-black h-[100px] w-[100px] '/>
+                <img id='frontShiny' src="/" alt="" className='border border-black h-[100px] w-[100px] '/>
+
+                <img id='backShiny' src="/" alt="" className='border border-black h-[100px] w-[100px] '/>
                 
-                <img id='' src="/" alt="" className='border border-black h-[100px] w-[100px] '/>
-                
-                <img id='' src="/" alt="" className='border border-black h-[100px] w-[100px] '/>
-                
-                <img id='' src="/" alt="" className='border border-black h-[100px] w-[100px] '/>
+                <img id='frontFemale' src="/" alt="" className='border border-black h-[100px] w-[100px] '/>
             </div>
         </>
     )
