@@ -63,8 +63,8 @@ export default function PokemonFetch() {
     }
 
     return(
-        <>
-            <div id="div" className='flex justify-center align-center flex-cols-2 my-[50px]'>
+        <div className='my-[50px]'>
+            <div id="div" className='flex justify-center align-center flex-cols-2 '>
                 <input 
                     type="text" 
                     placeholder="Pokemon's Name : " 
@@ -126,6 +126,6 @@ export default function PokemonFetch() {
                     className='border border-black h-[100px] w-[100px] p-[5px]'
                 />
             </div>
-        </>
+        </div>
     )
 }
