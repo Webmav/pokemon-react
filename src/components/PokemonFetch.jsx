@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function PokemonFetch() {
     const [inputName, setInputName] = useState("")
@@ -11,6 +11,10 @@ export default function PokemonFetch() {
             fetchData();
         }
     }
+
+    useEffect(() => {
+        fetchData()
+    },[])
 
     async function fetchData()  {
         const div = document.getElementById("div");
@@ -26,7 +30,11 @@ export default function PokemonFetch() {
         
         setInputName(inputName)
 
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${inputName}`)
+        let url = `https://pokeapi.co/api/v2/pokemon/${inputName}`;
+
+        {(inputName == "") ? url = `https://pokeapi.co/api/v2/pokemon/rayquaza-mega` : url }
+
+        const response = await fetch(url)
         .then(response => response.json())
         .then((data) => {
 
@@ -70,10 +78,10 @@ export default function PokemonFetch() {
             <div className="flex gap-[100px] justify-self-center mt-[50px] items-center">
                 <div className='w-[200px] h-[200px] border border-black'>
                     <img
-                        src=""
+                        src="/"
                         alt=''
                         id='frontDefault'
-                        className='w-[100%] h-[100%] '
+                        className='w-[100%] h-[100%] p-[10px]'
                     />
                 </div>
                 
@@ -90,13 +98,33 @@ export default function PokemonFetch() {
                 </div>
             </div>
             <div className="flex min-h-[100px] min-w-[100px] justify-self-center gap-[50px] mt-[50px] ">
-                <img id='backDefault' src="" alt="" className='border border-black h-[100px] w-[100px] '/>
+                <img 
+                    id='backDefault' 
+                    src="/" 
+                    alt="" 
+                    className='border border-black h-[100px] w-[100px] p-[5px]'
+                />
                 
-                <img id='frontShiny' src="" alt="" className='border border-black h-[100px] w-[100px] '/>
+                <img 
+                    id='frontShiny' 
+                    src="/" 
+                    alt="" 
+                    className='border border-black h-[100px] w-[100px] p-[5px]'
+                />
 
-                <img id='backShiny' src="" alt="" className='border border-black h-[100px] w-[100px] '/>
+                <img 
+                    id='backShiny' 
+                    src="/" 
+                    alt="" 
+                    className='border border-black h-[100px] w-[100px] p-[5px]'
+                />
                 
-                <img id='frontFemale' src="" alt="" className='border border-black h-[100px] w-[100px] '/>
+                <img 
+                    id='frontFemale' 
+                    src="/" 
+                    alt="" 
+                    className='border border-black h-[100px] w-[100px] p-[5px]'
+                />
             </div>
         </>
     )
