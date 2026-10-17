@@ -6,6 +6,12 @@ export default function PokemonFetch() {
     const [pokemonType, setPokemonType] = useState("");
     const [pokemonAttacks, setPokemonAttacks] = useState("");
 
+    function EnterClicked(event) {
+        if(event.key == "Enter") {
+            fetchData();
+        }
+    }
+
     async function fetchData()  {
         const div = document.getElementById("div");
         const inputName = document.getElementById('inputName').value;
@@ -50,15 +56,21 @@ export default function PokemonFetch() {
 
     return(
         <>
-            <div id="div" className='flex justify-center align-center flex-cols-2 my-[25px]'>
-                <input type="text" placeholder="Pokemon's Name : " id="inputName" className='min-h-[10px] min-w-[100px] mr-5 px-2.5 py-1 border border-black rounded' />
+            <div id="div" className='flex justify-center align-center flex-cols-2 my-[50px]'>
+                <input 
+                    type="text" 
+                    placeholder="Pokemon's Name : " 
+                    id="inputName" 
+                    className='min-h-[10px] min-w-[100px] mr-5 px-2.5 py-1 border border-black rounded' 
+                    onKeyDown={EnterClicked}
+                />
                 <button onClick={fetchData} className='border border-black rounded px-2 py-1' >Search</button>  
             </div>
             
             <div className="flex gap-[100px] justify-self-center mt-[50px] items-center">
                 <div className='w-[200px] h-[200px] border border-black'>
                     <img
-                        src="/"
+                        src=""
                         alt=''
                         id='frontDefault'
                         className='w-[100%] h-[100%] '
@@ -78,13 +90,13 @@ export default function PokemonFetch() {
                 </div>
             </div>
             <div className="flex min-h-[100px] min-w-[100px] justify-self-center gap-[50px] mt-[50px] ">
-                <img id='backDefault' src="/" alt="" className='border border-black h-[100px] w-[100px] '/>
+                <img id='backDefault' src="" alt="" className='border border-black h-[100px] w-[100px] '/>
                 
-                <img id='frontShiny' src="/" alt="" className='border border-black h-[100px] w-[100px] '/>
+                <img id='frontShiny' src="" alt="" className='border border-black h-[100px] w-[100px] '/>
 
-                <img id='backShiny' src="/" alt="" className='border border-black h-[100px] w-[100px] '/>
+                <img id='backShiny' src="" alt="" className='border border-black h-[100px] w-[100px] '/>
                 
-                <img id='frontFemale' src="/" alt="" className='border border-black h-[100px] w-[100px] '/>
+                <img id='frontFemale' src="" alt="" className='border border-black h-[100px] w-[100px] '/>
             </div>
         </>
     )

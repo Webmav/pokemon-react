@@ -1,1 +1,5 @@
 @import 'tailwindcss';
+
+#menu-list {
+    gap: clamp(1rem, 5vw, 10rem);
+}
