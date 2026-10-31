@@ -21,7 +21,7 @@ export default function NavBar() {
                 </NavLink>
             </ul>
 
-            <button className='border rounded px-3 py-1 hover:bg-blue-70 max-md:hidden'>Button</button>
+            <button className='border rounded px-3 py-1 hover:bg-blue-70 max-md:hidden hover:bg-blue-600'>Button</button>
         </nav>
     )
 }
