@@ -26,7 +26,6 @@ export default function PokemonFetch() {
         const outputPokemonName = document.getElementById('pokemonName');
         const outputPokemonType = document.getElementById('pokemonType');
         const outputPokemonAttacks = document.getElementById('pokemonAttacks');
-        const frontFemale = document.getElementById('frontFemale');
         const frontShiny = document.getElementById('frontShiny');
         const backDefault = document.getElementById('backDefault');
         const backShiny = document.getElementById('backShiny');
@@ -41,12 +40,10 @@ export default function PokemonFetch() {
         .then(response => response.json())
         .then((data) => {
             frontDefault.src = data.sprites.front_default;
-            frontFemale.src = data.sprites.front_female;
             frontShiny.src = data.sprites.front_shiny;
             backDefault.src = data.sprites.back_default;
             backShiny.src = data.sprites.back_shiny;
 
-            { (frontFemale.src == "http://localhost:5173/null") ? frontFemale.style.display = "none" : frontFemale.style.display = "block";}
             { (frontShiny.src == "http://localhost:5173/null") ? frontShiny.style.display = "none" : frontShiny.style.display = "block";}
             { (backDefault.src == "http://localhost:5173/null") ? backDefault.style.display = "none" : backDefault.style.display = "block";}
             { (backShiny.src == "http://localhost:5173/null") ? backShiny.style.display = "none" : backShiny.style.display = "block";}
@@ -154,13 +151,6 @@ export default function PokemonFetch() {
 
                 <img 
                     id='backShiny' 
-                    src="/" 
-                    alt="" 
-                    className='h-[100px] w-[100px] p-[5px]'
-                />
-                
-                <img 
-                    id='frontFemale' 
                     src="/" 
                     alt="" 
                     className='h-[100px] w-[100px] p-[5px]'
