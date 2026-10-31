@@ -103,15 +103,15 @@ export default function PokemonFetch() {
 
     return(
         <div className='my-[50px]'>
-            <div id="div" className='flex justify-center align-center flex-cols-2 '>
+            <div id="div" className='flex justify-center items-center'>
                 <input 
                     type="text" 
                     placeholder="Pokemon's Name : " 
                     id="inputName" 
-                    className='min-h-[10px] min-w-[100px] mr-5 px-2.5 py-1 border border-black rounded' 
+                    className='min-h-[5px] md:min-h-[10px] min-w-[75px] md:min-w-[100px] mr-[10px] mr-[25px] my-[10px] px-3 py-1 border border-black rounded text-center' 
                     onKeyDown={EnterClicked}
                 />
-                <button onClick={fetchData} className='border border-black rounded px-2 py-1' >Search</button>  
+                <button onClick={fetchData} className='border border-black rounded px-2 py-1 hover:bg-blue-600' >Search</button>  
             </div>
             
             <div className="flex max-md:flex-col gap-[50px] md:gap-[100px] max-md:justify-center justify-self-center mt-[50px] items-center">
@@ -124,7 +124,7 @@ export default function PokemonFetch() {
                     />
                 </div>
                 
-                <div className='h-[250px] md:w-[500px] grid content-between'>
+                <div className='h-[200px] md:h-[250px] md:w-[500px] grid content-between'>
                     <div className='border border-gray-400 min-h-[50px] w-full px-[10px] flex items-center rounded'>
                         <p id='pokemonName'> </p>
                     </div>
