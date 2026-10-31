@@ -6,16 +6,19 @@ export default function PokemonFetch() {
     const [pokemonType, setPokemonType] = useState("");
     const [pokemonAttacks, setPokemonAttacks] = useState("");
 
+//To perform function on clicking enter
     function EnterClicked(event) {
         if(event.key == "Enter") {
             fetchData();
         }
     }
 
+//For initial screening of a pokemon
     useEffect(() => {
         fetchData()
     },[])
 
+//Function to fetch data
     async function fetchData()  {
         const div = document.getElementById("div");
         const inputName = document.getElementById('inputName').value;
@@ -62,6 +65,45 @@ export default function PokemonFetch() {
         .catch((error) => { console.error (error); })
     }
 
+//Function for downloading images
+    async function downloadImg() {
+        try { 
+            const imgUrl = document.getElementById("frontDefault").src;
+
+            const res = await fetch(imgUrl);
+            const blob = await res.blob();
+            const blobUrl = URL.createObjectURL(blob);
+
+            const link = document.createElement("a");
+            link.href = blobUrl;
+            link.download = `${pokemonName}.png`
+            link.click();
+
+            URL.revokeObjectURL(blob)
+        } catch(error) {
+            console.error("Could not download image : ", error)
+
+            try { 
+                const shinyImgUrl = document.getElementById("frontShiny").src;
+                
+                const res = await fetch(shinyImgUrl);
+                const blob = await res.blob();
+                const blobUrl = URL.createObjectURL(blob);
+    
+                const link = document.createElement("a")
+                link.href = blobUrl;
+                link.download = `${pokemonName}-shiny.png`
+                link.click();
+    
+                URL.revokeObjectURL(blob)
+            } catch(error) {
+                console.error("Could not download shiny image : ", error)
+                return
+            }
+        }
+
+    }
+
     return(
         <div className='my-[50px]'>
             <div id="div" className='flex justify-center align-center flex-cols-2 '>
@@ -97,6 +139,7 @@ export default function PokemonFetch() {
                     </div>
                 </div>
             </div>
+
             <div className="flex min-h-[100px] min-w-[100px] justify-self-center gap-[50px] mt-[50px] ">
                 <img 
                     id='backDefault' 
@@ -125,6 +168,15 @@ export default function PokemonFetch() {
                     alt="" 
                     className='border border-black h-[100px] w-[100px] p-[5px]'
                 />
+            </div>
+
+            <div className='flex justify-center my-[25px]'>
+                <button
+                    className="border border-black rounded px-3 py-1 hover:bg-blue-700"
+                    onClick={downloadImg}
+                >
+                    Download image
+                </button>
             </div>
         </div>
     )

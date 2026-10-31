@@ -19,12 +19,6 @@ export default function NavBar() {
                     <li>Images</li>
                 </NavLink>
             </ul>
-            <button 
-                className="border border-black rounded px-3 py-1 hover:bg-blue-700"
-                onClick={Clicked}
-            >
-                Download images
-            </button>
         </nav>
     )
 }
