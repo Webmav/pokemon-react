@@ -8,6 +8,7 @@ export default function NavBar() {
     return(
         <nav className="flex bg-blue-400 gap-[15px] justify-between px-[75px] py-[25px]">
             <h1 className="bold text-[20px]">Logo</h1>
+
             <ul id='menu-list' className="flex list-style-none mt-[2.5px]">
                 <NavLink to='/'>
                     <li>Home</li>
@@ -19,6 +20,8 @@ export default function NavBar() {
                     <li>Images</li>
                 </NavLink>
             </ul>
+
+            <button className='border rounded px-3 py-1 hover:bg-blue-700'>Button</button>
         </nav>
     )
 }

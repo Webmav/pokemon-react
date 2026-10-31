@@ -40,9 +40,6 @@ export default function PokemonFetch() {
         const response = await fetch(url)
         .then(response => response.json())
         .then((data) => {
-
-            console.log(data)
-
             frontDefault.src = data.sprites.front_default;
             frontFemale.src = data.sprites.front_female;
             frontShiny.src = data.sprites.front_shiny;
@@ -117,8 +114,8 @@ export default function PokemonFetch() {
                 <button onClick={fetchData} className='border border-black rounded px-2 py-1' >Search</button>  
             </div>
             
-            <div className="flex gap-[100px] justify-self-center mt-[50px] items-center">
-                <div className='w-[200px] h-[200px] border border-black'>
+            <div className="flex max-md:flex-col gap-[50px] md:gap-[100px] max-md:justify-center justify-self-center mt-[50px] items-center">
+                <div className='w-[200px] h-[200px]'>
                     <img
                         src="/"
                         alt=''
@@ -127,52 +124,52 @@ export default function PokemonFetch() {
                     />
                 </div>
                 
-                <div className='h-[250px] w-[500px] grid content-between'>
-                    <div className='border border-black min-h-[50px] max-w-[500px] px-[10px] flex items-center '>
+                <div className='h-[250px] md:w-[500px] grid content-between'>
+                    <div className='border border-gray-400 min-h-[50px] w-full px-[10px] flex items-center rounded'>
                         <p id='pokemonName'> </p>
                     </div>
-                    <div className='border border-black min-h-[50px] max-w-[500px] px-[10px] flex items-center '>
+                    <div className='border border-gray-400 min-h-[50px] w-full px-[10px] flex items-center rounded'>
                         <p id='pokemonType' > </p>
                     </div>
-                    <div className='border border-black min-h-[50px] max-w-[500px] px-[10px] flex items-center '>
+                    <div className='border border-gray-400 min-h-[50px] w-full px-[10px] flex items-center rounded'>
                         <p id='pokemonAttacks' ></p>
                     </div>
                 </div>
             </div>
 
-            <div className="flex min-h-[100px] min-w-[100px] justify-self-center gap-[50px] mt-[50px] ">
+            <div className="flex max-md:flex-wrap min-h-[100px] min-w-[100px] justify-self-center max-md:justify-center gap-[50px] mt-[50px] ">
                 <img 
                     id='backDefault' 
                     src="/" 
                     alt="" 
-                    className='border border-black h-[100px] w-[100px] p-[5px]'
+                    className='h-[100px] w-[100px] p-[5px]'
                 />
                 
                 <img 
                     id='frontShiny' 
                     src="/" 
                     alt="" 
-                    className='border border-black h-[100px] w-[100px] p-[5px]'
+                    className='h-[100px] w-[100px] p-[5px]'
                 />
 
                 <img 
                     id='backShiny' 
                     src="/" 
                     alt="" 
-                    className='border border-black h-[100px] w-[100px] p-[5px]'
+                    className='h-[100px] w-[100px] p-[5px]'
                 />
                 
                 <img 
                     id='frontFemale' 
                     src="/" 
                     alt="" 
-                    className='border border-black h-[100px] w-[100px] p-[5px]'
+                    className='h-[100px] w-[100px] p-[5px]'
                 />
             </div>
 
-            <div className='flex justify-center my-[25px]'>
+            <div className='flex justify-center mt-[30px]'>
                 <button
-                    className="border border-black rounded px-3 py-1 hover:bg-blue-700"
+                    className="border border-gray-400 rounded px-3 py-1 hover:bg-blue-700"
                     onClick={downloadImg}
                 >
                     Download image
